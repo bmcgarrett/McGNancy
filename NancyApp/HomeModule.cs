@@ -13,17 +13,19 @@ namespace NancyApp
         {
             Get["/"] = _ =>
             {
-                return View["home"];
+                return View["home.html"];
             };
+
+            Get["/unit"] = _ => "Test";
 
             Get["/Employees"] = _ =>
             {
-                return View["employees"];
+                return View["employees.html"];
             };
 
             Get["/Weather"] = _ =>
             {
-                return View["weather"];
+                return View["weather.html"];
             };
         }
     }
