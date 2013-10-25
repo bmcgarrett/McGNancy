@@ -11,19 +11,20 @@ namespace NancyApp
     {
         public HomeModule()
         {
-            Get["/"] = _ => "Hello World from Nancy";
+            Get["/"] = _ =>
+            {
+                return View["home"];
+            };
 
-            Get["/tools"] = x =>
-                            {
-                                string toolName = Request.Query["ToolName"];
-                                int toolID = Request.Query["ToolID"];
-                                
-                                var tool = new Tool();
-                                tool.ToolId = toolID;
-                                tool.ToolName = toolName;
+            Get["/Employees"] = _ =>
+            {
+                return View["employees"];
+            };
 
-                                return View["Tool.html", tool];
-                            };
+            Get["/Weather"] = _ =>
+            {
+                return View["weather"];
+            };
         }
     }
 }
