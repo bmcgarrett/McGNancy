@@ -2,17 +2,17 @@
 using System.IO;
 using System.Linq;
 using Nancy.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nancy;
 using NancyApp;
+using NUnit.Framework;
 using HttpStatusCode = Nancy.HttpStatusCode;
 
 namespace NancyTests
 {
-    [TestClass]
+    [TestFixture]
     public class HomeModuleTest
     {
-        [TestMethod]
+        [Test]
         public void Should_return_status_ok_when_route_exists()
         {
             // Given
