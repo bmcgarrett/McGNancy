@@ -11,11 +11,13 @@
             </tr>
         </thead>
         <tbody>
+            @Each
             <tr>
-                <td>1</td>
-                <td>Brendan</td>
-                <td>McGarrett</td>
+                <td>@Current.Index</td>
+                <td>@Current.FirstName</td>
+                <td>@Current.LastName</td>
             </tr>
+            @EndEach
         </tbody>
     </table>
 </div>

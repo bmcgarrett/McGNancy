@@ -20,7 +20,8 @@ namespace NancyApp
 
             Get["/Employees"] = _ =>
             {
-                return View["employees.html"];
+                EmployeeListGenerator employeeList = new EmployeeListGenerator();
+                return View["employees.html",employeeList.GetEmployees()];
             };
 
             Get["/Weather"] = _ =>
@@ -29,4 +30,6 @@ namespace NancyApp
             };
         }
     }
+
+
 }
