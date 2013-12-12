@@ -2,18 +2,18 @@
 using System.IO;
 using System.Linq;
 using Nancy.Testing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nancy;
 using NancyApp;
+using NUnit.Framework;
 using HttpStatusCode = Nancy.HttpStatusCode;
 
 namespace NancyTests
 {
-    [TestClass]
+    [TestFixture]
     public class HomeModuleTest
     {
-        [TestMethod]
-        public void Should_return_status_ok_when_route_exists()
+        [Test]
+        public void Should_return_status_ok_when_root_route_exists()
         {
             // Given
             var boostrapper = new ConfigurableBootstrapper(with =>
@@ -31,8 +31,27 @@ namespace NancyTests
 
             // Then
             Assert.AreEqual(HttpStatusCode.OK,result.StatusCode);
+        }
 
+        [Test]
+        public void Should_return_status_ok_when_Employees_route_exists()
+        {
+            // Given
+            var boostrapper = new ConfigurableBootstrapper(with =>
+            {
+                with.Module<HomeModule>();
+            });
 
+            var browser = new Browser(boostrapper);
+
+            // When
+            var result = browser.Get("/Employees", with =>
+            {
+                with.HttpRequest();
+            });
+
+            // Then
+            Assert.AreEqual(HttpStatusCode.OK, result.StatusCode); 
         }
     }
 }
